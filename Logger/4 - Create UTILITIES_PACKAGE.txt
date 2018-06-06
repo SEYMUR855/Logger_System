@@ -1,0 +1,71 @@
+create or replace PACKAGE                  "UTILITIES_PACKAGE" AS 
+
+  FUNCTION ARE_EQUAL(firstValue VARCHAR2, secondValue VARCHAR2) RETURN NUMBER;
+  FUNCTION ARE_EQUAL(firstValue NUMBER, secondValue NUMBER) RETURN NUMBER;
+  FUNCTION ARE_EQUAL(firstValue DATE, secondValue DATE) RETURN NUMBER;
+
+END UTILITIES_PACKAGE;
+
+create or replace PACKAGE BODY                  "UTILITIES_PACKAGE" AS
+
+  FUNCTION ARE_EQUAL
+  (
+    firstValue VARCHAR2, 
+    secondValue VARCHAR2
+  ) 
+  RETURN NUMBER 
+  AS
+    p_return NUMBER(1, 0);
+  BEGIN    
+      IF firstValue != secondValue
+          OR (firstValue IS NOT NULL AND secondValue IS NULL)
+          OR (secondValue IS NOT NULL AND firstValue IS NULL)
+      THEN
+        p_return := 0;
+      ELSE
+        p_return := 1;
+      END IF;
+    RETURN p_return;
+  END ARE_EQUAL;
+
+  FUNCTION ARE_EQUAL
+  (
+    firstValue NUMBER, 
+    secondValue NUMBER
+  ) 
+  RETURN NUMBER 
+  AS
+    p_return NUMBER(1, 0);
+  BEGIN    
+      IF firstValue != secondValue
+          OR (firstValue IS NOT NULL AND secondValue IS NULL)
+          OR (secondValue IS NOT NULL AND firstValue IS NULL)
+      THEN
+        p_return := 0;
+      ELSE
+        p_return := 1;
+      END IF;
+    RETURN p_return;
+  END ARE_EQUAL;
+
+  FUNCTION ARE_EQUAL
+  (
+    firstValue DATE, 
+    secondValue DATE
+  ) 
+  RETURN NUMBER 
+  AS
+    p_return NUMBER(1, 0);
+  BEGIN    
+      IF firstValue != secondValue
+          OR (firstValue IS NOT NULL AND secondValue IS NULL)
+          OR (secondValue IS NOT NULL AND firstValue IS NULL)
+      THEN
+        p_return := 0;
+      ELSE
+        p_return := 1;
+      END IF;
+    RETURN p_return;
+  END ARE_EQUAL;
+
+END UTILITIES_PACKAGE;
